@@ -37,3 +37,4 @@ Setup commands:
 2) npm run dev;
 3) composer install;
 4) php artisan migrate;
+5) php artisan storage:link;

@@ -13,18 +13,14 @@
 
     <body>
         <div class="container mt-2 mx-auto">
-            <form enctype="multipart/form-data" method="post" dusk="form_compare">
+            <form action="{{ route('compare') }}" enctype="multipart/form-data" method="POST" dusk="form_compare">
+                @csrf
+
                 <div class="gap-4 grid grid-cols-2">
                     <div class="grid col-span-2">
                         <h1 class="font-bold text-3xl underline">
-                            Compare old and new Data through CSV files
+                            Compare New and Old Data through CSV files
                         </h1>
-                    </div>
-
-                    <div>
-                        <label dusk="label_old_data" for="old_data">
-                            Old Data
-                        </label>
                     </div>
 
                     <div>
@@ -34,11 +30,17 @@
                     </div>
 
                     <div>
-                        <input accept=".csv" dusk="old_data" id="old_data" name="old_data" type="file" />
+                        <label dusk="label_old_data" for="old_data">
+                            Old Data
+                        </label>
                     </div>
 
                     <div>
-                        <input accept=".csv" dusk="new_data" id="new_data" name="new_data" type="file" />
+                        <input accept=".csv" dusk="new_data" id="new_data" name="new_data" type="file" required />
+                    </div>
+
+                    <div>
+                        <input accept=".csv" dusk="old_data" id="old_data" name="old_data" type="file" required />
                     </div>
 
                     <div>

@@ -4,3 +4,6 @@ use App\Http\Controllers\CompareDataController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [CompareDataController::class, 'index']);
+
+Route::post('/compare', [CompareDataController::class, 'compare'])
+    ->name('compare');
