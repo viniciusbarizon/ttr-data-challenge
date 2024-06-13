@@ -27,6 +27,7 @@ que forma 'ataca' o problema e como estrutura o código.
 6) <a href="https://www.git-scm.com/">Git</a>;
 7) <a href="https://github.com/">GitHub</a>;
 8) <a href="https://tailwindcss.com/">tailwindcss</a>;
+9) <a href="https://laravel.com/docs/11.x/dusk">Laravel Dusk</a>;
 
 ####
 
