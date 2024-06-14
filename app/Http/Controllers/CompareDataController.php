@@ -14,50 +14,33 @@ class CompareDataController
 
     public function compare()
     {
-        $path = request()->file('old_data')
+        $oldFilePath = $this->getPath(inputName: 'old_data');
+        $oldData = $this->getData($oldFilePath);
+
+        $newFilePath = $this->getPath(inputName: 'new_data');
+        $newData = $this->getData($newFilePath);
+
+        // TODO: call action.
+    }
+
+    private function getPath(string $inputName): string
+    {
+        return request()->file('old_data')
             ->storeAs('csv', time() . '.csv', 'public');
+    }
 
-        $csv = Reader::createFromPath('storage/' . $path, 'r');
-        $csv->setDelimiter(';');
-        $csv->setHeaderOffset(0);
+    private function getData(string $path): array
+    {
+        $reader = Reader::createFromPath('storage/' . $path, 'r');
+        $reader->setDelimiter(';');
+        $reader->setHeaderOffset(0);
 
-        $records = $csv->getRecords();
+        $records = $reader->getRecords();
 
         foreach ($records as $record) {
-            $old[$record['cnpj']] = $record;
-        }
-        dd($old);
-
-        /* $file = fopen(request()->file('old_data')->getRealPath(), 'r');
-        $header = true;
-        //dd($file);
-        while (($line = fgetcsv($file, null, ';')) !== FALSE) {
-            // skip the header.
-            if ($header === true) {
-                // remove the last item from header if empty.
-                // example: aaa;bbb;ccc;
-                if (empty(end($line))) {
-                    array_pop($line);
-                }
-
-                $header = false;
-                $numberOfColumns = count($line);
-
-                continue;
-            }
-
-            // identifier of the line.
-            $id = $line[0];
-
-            // remove the identifier from array
-            $test = array_slice($line, 1, $numberOfColumns - 1);
-
-            $old[$id] = $test;
+            $data[$record['pdf_file_name']] = $record;
         }
 
-        fclose($file);
-
-        print("<pre>");
-        print_r($old); */
+        return $data;
     }
 }
