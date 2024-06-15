@@ -1,3 +1,5 @@
+## Challenge
+
 O desafio é um exemplo de algo que tivemos que implementar recentemente e que serve também como um exemplo do que seria
 a experiencia na nossa empresa. Muitas vezes temos integrações com APIs super completas e outras vezes são integrações
 mais tradicionais como este caso.
@@ -15,37 +17,31 @@ Deverá ser implementado em PHP com a framework que preferires (preferencialment
 usar framework). A qualidade da interface gráfica não importa. O objectivo aqui é perceber como o candidato pensa, de
 que forma 'ataca' o problema e como estrutura o código.
 
-####
+## Tech
 
-<b>Tecnologias utilizadas:</b>
+- [Herd](https://herd.laravel.com/");
+- [DBngin](https://dbngin.com/");
+- [Laravel 11](https://laravel.com/);
+- [PHP 8.3](https://www.php.net/);
+- [Pest PHP 2](https://pestphp.com/);
+- [Git](https://www.git-scm.com/);
+- [GitHub](https://github.com/);
+- [tailwindcss](https://tailwindcss.com/);
+- [Laravel Dusk](https://laravel.com/docs/11.x/dusk).
 
-1) <a href="https://herd.laravel.com/">Herd</a>;
-2) <a href="https://dbngin.com/">DBngin</a>;
-3) <a href="https://laravel.com/">Laravel 11</a>;
-4) <a href="https://www.php.net/">PHP 8.3</a>;
-5) <a href="https://pestphp.com/">Pest 2</a>;
-6) <a href="https://www.git-scm.com/">Git</a>;
-7) <a href="https://github.com/">GitHub</a>;
-8) <a href="https://tailwindcss.com/">tailwindcss</a>;
-9) <a href="https://laravel.com/docs/11.x/dusk">Laravel Dusk</a>;
+## Setup commands
 
-####
+- [npm install];
+- [npm run dev];
+- [composer install];
+- [php artisan migrate];
+- [php artisan storage:link].
 
-Setup commands:
-
-1) npm install;
-2) npm run dev;
-3) composer install;
-4) php artisan migrate;
-5) php artisan storage:link;
-
-###
+## Actions
 
 <a href="https://freek.dev/1371-refactoring-to-actions">Refactoring to actions</a>.
 
-####
-
-php artisan test:
+## Back-end tests with Pest
 
 vinicius@ViniciussLaptop ttr-data-challenge % php artisan test
 
@@ -63,7 +59,7 @@ vinicius@ViniciussLaptop ttr-data-challenge % php artisan test
   Tests:    5 passed (5 assertions)
   Duration: 0.08s
 
-####
+## Front-end tests with Dusk
 
 vinicius@ViniciussLaptop ttr-data-challenge % php artisan dusk
 
