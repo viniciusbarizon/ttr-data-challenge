@@ -12,7 +12,7 @@ test('it has the correct title', function () {
 test('it has the compare text', function () {
     $this->browse(function (Browser $browser) {
         $browser->visit('/')
-            ->assertSee('Compare New and Old Data through CSV files');
+            ->assertSee('Compare Recent and Old Data through CSV files');
     });
 });
 
@@ -34,18 +34,18 @@ test('it has the token in the form', function () {
     });
 });
 
-test('it has the new data input with the correct attributes', function () {
+test('it has the recent data input with the correct attributes', function () {
     $this->browse(function (Browser $browser) {
         $browser->visit('/')
-            ->assertSee('New Data')
-            ->assertVisible('@label_new_data')
-            ->assertAttribute('@label_new_data', 'for', 'new_data')
-            ->assertVisible('@new_data')
-            ->assertAttribute('@new_data', 'accept', '.csv')
-            ->assertAttribute('@new_data', 'id', 'new_data')
-            ->assertAttribute('@new_data', 'name', 'new_data')
-            ->assertAttribute('@new_data', 'required', 'true')
-            ->assertAttribute('@new_data', 'type', 'file');
+            ->assertSee('Recent Data')
+            ->assertVisible('@label_recent_data')
+            ->assertAttribute('@label_recent_data', 'for', 'recent_data')
+            ->assertVisible('@recent_data')
+            ->assertAttribute('@recent_data', 'accept', '.csv')
+            ->assertAttribute('@recent_data', 'id', 'recent_data')
+            ->assertAttribute('@recent_data', 'name', 'recent_data')
+            ->assertAttribute('@recent_data', 'required', 'true')
+            ->assertAttribute('@recent_data', 'type', 'file');
     });
 });
 

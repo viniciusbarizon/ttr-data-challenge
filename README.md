@@ -38,3 +38,43 @@ Setup commands:
 3) composer install;
 4) php artisan migrate;
 5) php artisan storage:link;
+
+###
+
+<a href="https://freek.dev/1371-refactoring-to-actions">Refactoring to actions</a>.
+
+####
+
+php artisan test:
+
+vinicius@ViniciussLaptop ttr-data-challenge % php artisan test
+
+   PASS  Tests\Unit\CompareActionTest
+  ✓ it expects equals for the file DODF_2019_5_31_561060_2018.pdf
+  ✓ it expects new for the file DOSC_2016_3_31_479021_2016.pdf
+  ✓ it expects updated for the file DOSC_2018_4_4_542126_2017.pdf
+
+   PASS  Tests\Unit\ExampleTest
+  ✓ that true is true
+
+   PASS  Tests\Feature\ExampleTest
+  ✓ it returns a successful response                                                                                                                  0.05s  
+
+  Tests:    5 passed (5 assertions)
+  Duration: 0.08s
+
+####
+
+vinicius@ViniciussLaptop ttr-data-challenge % php artisan dusk
+
+   PASS  Tests\Browser\IndexTest
+  ✓ it has the correct title                                                                                                                          0.67s  
+  ✓ it has the compare text                                                                                                                           0.04s  
+  ✓ it has the form with the correct attributes                                                                                                       0.07s  
+  ✓ it has the token in the form                                                                                                                      0.04s  
+  ✓ it has the recent data input with the correct attributes                                                                                          0.07s  
+  ✓ it has the old data input with the correct attributes                                                                                             0.07s  
+  ✓ it has the submit button with the correct attributes                                                                                              0.06s  
+
+  Tests:    7 passed (45 assertions)
+  Duration: 1.15s

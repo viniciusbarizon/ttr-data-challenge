@@ -19,13 +19,13 @@
                 <div class="gap-4 grid grid-cols-2">
                     <div class="grid col-span-2">
                         <h1 class="font-bold text-3xl underline">
-                            Compare New and Old Data through CSV files
+                            Compare Recent and Old Data through CSV files
                         </h1>
                     </div>
 
                     <div>
-                        <label dusk="label_new_data" for="new_data">
-                            New Data
+                        <label dusk="label_recent_data" for="recent_data">
+                            Recent Data
                         </label>
                     </div>
 
@@ -36,7 +36,7 @@
                     </div>
 
                     <div>
-                        <input accept=".csv" dusk="new_data" id="new_data" name="new_data" type="file" required />
+                        <input accept=".csv" dusk="recent_data" id="recent_data" name="recent_data" type="file" required />
                     </div>
 
                     <div>

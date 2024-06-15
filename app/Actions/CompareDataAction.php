@@ -5,34 +5,34 @@ namespace App\Actions;
 class CompareDataAction
 {
     private array $comparison;
-    private array $newData;
     private array $oldData;
+    private array $recentData;
 
-    public function compare(array $newData, array $oldData): array
+    public function compare(array $oldData, array $recentData): array
     {
-        $this->newData = $newData;
         $this->oldData = $oldData;
+        $this->recentData = $recentData;
 
         return $this->getComparison();
     }
 
     private function getComparison(): array
     {
-        foreach ($this->newData as $filename => $data) {
-            if ($this->isNew($filename)) {
+        foreach ($this->recentData as $id => $data) {
+            if ($this->isNew($id)) {
                 $this->addToComparison(
-                    filename: $filename,
-                    newData: $data,
+                    data: $data,
+                    id: $id,
                     type: 'new'
                 );
 
                 continue;
             }
 
-            if ($this->isEqual($filename, $data)) {
+            if ($this->isEqual($id, $data)) {
                 $this->addToComparison(
-                    filename: $filename,
-                    newData: $data,
+                    data: $data,
+                    id: $id,
                     type: 'equals'
                 );
 
@@ -40,8 +40,8 @@ class CompareDataAction
             }
 
             $this->addToComparison(
-                filename: $filename,
-                newData: $data,
+                data: $data,
+                id: $id,
                 type: 'updated'
             );
         }
@@ -49,18 +49,18 @@ class CompareDataAction
         return $this->comparison;
     }
 
-    private function isNew(string $filename): bool
+    private function isNew(string $id): bool
     {
-        return isset($this->oldData[$filename]) === false;
+        return isset($this->oldData[$id]) === false;
     }
 
-    private function addToComparison(string $filename, array $newData, string $type): void
+    private function addToComparison(array $data, string $id, string $type): void
     {
-        $this->comparison[$type][$filename] = $newData;
+        $this->comparison[$type][$id] = $data;
     }
 
-    private function isEqual(string $filename, array $newData): bool
+    private function isEqual(string $id, array $newData): bool
     {
-        return $this->oldData[$filename] === $newData;
+        return $this->oldData[$id] === $newData;
     }
 }

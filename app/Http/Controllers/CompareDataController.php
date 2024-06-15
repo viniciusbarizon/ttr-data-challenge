@@ -7,20 +7,31 @@ use League\Csv\Reader;
 
 class CompareDataController
 {
+    private string $recentFilePath;
+    private array $recentData;
+    private string $oldFilePath;
+    private array $oldData;
+
     public function index(): View
     {
         return view('compare-data.index');
     }
 
-    public function compare()
+    public function compare(): View
     {
-        $oldFilePath = $this->getPath(inputName: 'old_data');
-        $oldData = $this->getData($oldFilePath);
+        $this->recentFilePath = $this->getPath(inputName: 'recent_data');
+        $this->recentData = $this->getData(path: $this->recentFilePath);
 
-        $newFilePath = $this->getPath(inputName: 'new_data');
-        $newData = $this->getData($newFilePath);
+        $this->oldFilePath = $this->getPath(inputName: 'old_data');
+        $this->oldData = $this->getData(path: $this->oldFilePath);
+
+        $this->log();
+
+        dd('ok');
 
         // TODO: call action.
+
+        return back()->with('comparison', $comparison);
     }
 
     private function getPath(string $inputName): string
@@ -42,5 +53,18 @@ class CompareDataController
         }
 
         return $data;
+    }
+
+    private function log(): void
+    {
+        activity()
+            ->byAnonymous()
+            ->withProperties([
+                'recentFilePath' => $this->recentFilePath,
+                'recentData' => $this->recentData,
+                'oldFilePath' => $this->oldFilePath,
+                'oldData' => $this->oldData,
+            ])
+            ->log('Compare Data');
     }
 }
