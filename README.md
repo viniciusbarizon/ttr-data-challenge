@@ -42,7 +42,7 @@ que forma 'ataca' o problema e como estrutura o código.
 
 ## Actions
 
-<a href="https://freek.dev/1371-refactoring-to-actions" target="_blank">Refactoring to actions</a>.
+<a href="https://freek.dev/1371-refactoring-to-actions">Refactoring to actions</a>.
 
 ## Back-end tests with Pest
 
