@@ -23,6 +23,18 @@
                         </h1>
                     </div>
 
+                    @if ($errors->any())
+                        <div class="bg-red-500 grid col-span-2 pl-2 text-white">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>
+                                        {{ $error }}
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     <div>
                         <label dusk="label_recent_data" for="recent_data">
                             Recent Data
@@ -51,6 +63,10 @@
                     </div>
                 </div>
             </form>
+
+            @if (session()->has('comparison'))
+                TODO: tables
+            @endif
         </div>
     </body>
 </html>

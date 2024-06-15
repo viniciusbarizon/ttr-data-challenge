@@ -30,7 +30,8 @@ que forma 'ataca' o problema e como estrutura o código.
 - [Laravel Dusk](https://laravel.com/docs/11.x/dusk);
 - [Activity Log](https://spatie.be/docs/laravel-activitylog/v4/introduction);
 - [TDD](https://en.wikipedia.org/wiki/Test-driven_development);
-- [League CSV](https://csv.thephpleague.com/).
+- [League CSV](https://csv.thephpleague.com/);
+- [Debugbar for Laravel](https://github.com/barryvdh/laravel-debugbar).
 
 ## Setup commands
 

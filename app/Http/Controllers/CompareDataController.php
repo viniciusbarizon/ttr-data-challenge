@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\CompareDataAction;
+use App\Http\Requests\CompareDataRequest;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use League\Csv\Reader;
 
 class CompareDataController
 {
+    private array $comparison;
     private string $recentFilePath;
     private array $recentData;
     private string $oldFilePath;
@@ -17,7 +21,7 @@ class CompareDataController
         return view('compare-data.index');
     }
 
-    public function compare(): View
+    public function compare(CompareDataRequest $request, CompareDataAction $action): RedirectResponse
     {
         $this->recentFilePath = $this->getPath(inputName: 'recent_data');
         $this->recentData = $this->getData(path: $this->recentFilePath);
@@ -25,13 +29,11 @@ class CompareDataController
         $this->oldFilePath = $this->getPath(inputName: 'old_data');
         $this->oldData = $this->getData(path: $this->oldFilePath);
 
+        $this->comparison = $this->getComparison(action: $action);
+
         $this->log();
 
-        dd('ok');
-
-        // TODO: call action.
-
-        return back()->with('comparison', $comparison);
+        return back()->with('comparison', $this->comparison);
     }
 
     private function getPath(string $inputName): string
@@ -55,11 +57,21 @@ class CompareDataController
         return $data;
     }
 
+    private function getComparison(CompareDataAction $action): array
+    {
+        return $action->compare(
+            oldData: $this->oldData,
+            recentData: $this->recentData
+        );
+    }
+
     private function log(): void
     {
         activity()
             ->byAnonymous()
             ->withProperties([
+                'comparison' => $this->comparison,
+                'ip' => request()->ip(),
                 'recentFilePath' => $this->recentFilePath,
                 'recentData' => $this->recentData,
                 'oldFilePath' => $this->oldFilePath,
