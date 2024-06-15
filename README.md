@@ -31,11 +31,11 @@ que forma 'ataca' o problema e como estrutura o código.
 
 ## Setup commands
 
-- [npm install];
-- [npm run dev];
-- [composer install];
-- [php artisan migrate];
-- [php artisan storage:link].
+- npm install;
+- npm run dev;
+- composer install;
+- php artisan migrate;
+- php artisan storage:link.
 
 ## Actions
 
