@@ -19,8 +19,8 @@ que forma 'ataca' o problema e como estrutura o código.
 
 ## Tech
 
-- [Herd](https://herd.laravel.com/");
-- [DBngin](https://dbngin.com/");
+- [Herd](https://herd.laravel.com/);
+- [DBngin](https://dbngin.com/);
 - [Laravel 11](https://laravel.com/);
 - [PHP 8.3](https://www.php.net/);
 - [Pest PHP 2](https://pestphp.com/);
