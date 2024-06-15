@@ -13,7 +13,7 @@
 
     <body>
         <div class="container mt-2 mx-auto">
-            <form action="{{ route('compare') }}" enctype="multipart/form-data" method="POST" dusk="form_compare">
+            <form action="{{ route('compare') }}" enctype="multipart/form-data" id="form_compare" method="POST" dusk="form_compare">
                 @csrf
 
                 <div class="gap-4 grid grid-cols-2">
@@ -65,7 +65,7 @@
             </form>
 
             @if (session()->has('comparison'))
-                TODO: tables
+                <x-table whom="new" />
             @endif
         </div>
     </body>

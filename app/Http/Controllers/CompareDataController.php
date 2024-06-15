@@ -38,7 +38,7 @@ class CompareDataController
 
     private function getPath(string $inputName): string
     {
-        return request()->file('old_data')
+        return request()->file($inputName)
             ->storeAs('csv', time() . '.csv', 'public');
     }
 
@@ -51,7 +51,7 @@ class CompareDataController
         $records = $reader->getRecords();
 
         foreach ($records as $record) {
-            $data[$record['pdf_file_name']] = $record;
+            $data[] = $record;
         }
 
         return $data;

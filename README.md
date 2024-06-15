@@ -17,8 +17,6 @@ Deverá ser implementado em PHP com a framework que preferires (preferencialment
 usar framework). A qualidade da interface gráfica não importa. O objectivo aqui é perceber como o candidato pensa, de
 que forma 'ataca' o problema e como estrutura o código.
 
-*** Assumi que a coluna pdf_file_name é o identificador da linha. ***
-
 ## Tech
 
 - [Herd](https://herd.laravel.com/);
@@ -49,12 +47,12 @@ que forma 'ataca' o problema e como estrutura o código.
 
 ## Back-end tests with Pest
 
-vinicius@ViniciussLaptop ttr-data-challenge % php artisan test                                
+vinicius@ViniciussLaptop ttr-data-challenge % php artisan test
 
    PASS  Tests\Unit\CompareDataActionTest
-  ✓ it expects equals for the file DODF_2019_5_31_561060_2018.pdf                                                                                     0.01s  
-  ✓ it expects new for the file DOSC_2016_3_31_479021_2016.pdf
-  ✓ it expects updated for the file DOSC_2018_4_4_542126_2017.pdf
+  ✓ it expects equals when we repeat a line in the recent data                                                                                        0.01s  
+  ✓ it expects new when we create a line in the recent data
+  ✓ it expects updated when we changed a line in the recent data
 
    PASS  Tests\Unit\ExampleTest
   ✓ that true is true
@@ -63,7 +61,7 @@ vinicius@ViniciussLaptop ttr-data-challenge % php artisan test
   ✓ it returns a successful response                                                                                                                  0.06s  
 
   Tests:    5 passed (5 assertions)
-  Duration: 0.14s
+  Duration: 0.13s
 
 ## Front-end tests with Dusk
 

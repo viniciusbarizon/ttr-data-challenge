@@ -72,3 +72,14 @@ test('it has the submit button with the correct attributes', function () {
             ->assertInputValue('@submit_compare', 'Compare');
     });
 });
+
+test('it validates the data files as required', function () {
+    $this->browse(function (Browser $browser) {
+        $browser->visit('/')
+            ->script("document.querySelector('#form_compare').noValidate = true");
+
+        $browser->press('@submit_compare')
+            ->assertSee('The recent data field is required.')
+            ->assertSee('The old data field is required.');
+    });
+});

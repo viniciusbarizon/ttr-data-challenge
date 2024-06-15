@@ -4,63 +4,59 @@ namespace App\Actions;
 
 class CompareDataAction
 {
-    private array $comparison;
     private array $oldData;
+    private array $oldDataFlip;
+    private array $oldDataImploded;
     private array $recentData;
+    private array $recentDataFlip;
+    private array $recentDataImploded;
 
     public function compare(array $oldData, array $recentData): array
     {
         $this->oldData = $oldData;
         $this->recentData = $recentData;
 
+        $this->recentDataImploded = $this->getDataImploded($this->recentData);
+        $this->oldDataImploded = $this->getDataImploded($this->oldData);
+
+        $this->recentDataFlip = array_flip($this->recentDataImploded);
+        $this->oldDataFlip = array_flip($this->oldDataImploded);
+
         return $this->getComparison();
+    }
+
+    private function getDataImploded(array $data): array
+    {
+        return array_map(function($row) {
+            return implode('||', $row);
+        }, $data);
     }
 
     private function getComparison(): array
     {
-        foreach ($this->recentData as $id => $data) {
-            if ($this->isNew($id)) {
-                $this->addToComparison(
-                    data: $data,
-                    id: $id,
-                    type: 'new'
-                );
+        $new = array_diff_key($this->recentDataFlip, $this->oldDataFlip);
+        $updated = array_diff_key($this->oldDataFlip, $this->recentDataFlip);
 
-                continue;
-            }
-
-            if ($this->isEqual($id, $data)) {
-                $this->addToComparison(
-                    data: $data,
-                    id: $id,
-                    type: 'equals'
-                );
-
-                continue;
-            }
-
-            $this->addToComparison(
-                data: $data,
-                id: $id,
-                type: 'updated'
-            );
-        }
-
-        return $this->comparison;
+        return [
+            'equals' => $this->getEquals(),
+            'new' =>$new,
+            'updated' => $updated,
+        ];
     }
 
-    private function isNew(string $id): bool
+    private function getEquals(): array
     {
-        return isset($this->oldData[$id]) === false;
+        $equals = array_intersect_key($this->recentDataFlip, $this->oldDataFlip);
+
+        return $this->getDataExploded(data: $equals);
     }
 
-    private function addToComparison(array $data, string $id, string $type): void
+    private function getDataExploded(array $data): array
     {
-        $this->comparison[$type][$id] = $data;
-    }
+        $data = array_flip($data);
 
-    private function isEqual(string $id, array $newData): bool
-    {
-        return $this->oldData[$id] === $newData;
+        return array_map(function($row) {
+            return explode('||', $row);
+        }, $data);
     }
 }
