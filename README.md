@@ -27,7 +27,10 @@ que forma 'ataca' o problema e como estrutura o código.
 - [Git](https://www.git-scm.com/);
 - [GitHub](https://github.com/);
 - [tailwindcss](https://tailwindcss.com/);
-- [Laravel Dusk](https://laravel.com/docs/11.x/dusk).
+- [Laravel Dusk](https://laravel.com/docs/11.x/dusk);
+- [Activity Log](https://spatie.be/docs/laravel-activitylog/v4/introduction);
+- [TDD](https://en.wikipedia.org/wiki/Test-driven_development);
+- [League CSV](https://csv.thephpleague.com/).
 
 ## Setup commands
 
